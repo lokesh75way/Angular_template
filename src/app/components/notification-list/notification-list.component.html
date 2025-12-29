@@ -1,0 +1,8 @@
+<div class="notifications-container">
+    @for (notif of notifications(); track notif.id) {
+    <div [ngClass]="'notification-' + notif.type" @slideIn>
+        <p>{{ notif.message }}</p>
+        <span class="timestamp">{{ notif.timestamp | date: 'short' }}</span>
+    </div>
+    }
+</div>

@@ -1,0 +1,54 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="edit-user-form" novalidate>
+  <div class="card">
+    <h3 class="title">Edit User</h3>
+
+    <div class="grid">
+      <div class="form-group">
+        <label for="name">Name <span class="required">*</span></label>
+        <input id="name" type="text" formControlName="name" placeholder="Full name" [attr.aria-invalid]="getControl('name')?.invalid" />
+        <p *ngIf="getControl('name')?.invalid && getControl('name')?.touched" class="error">
+          <span *ngIf="getControl('name')?.errors?.['required']">Name is required</span>
+          <span *ngIf="getControl('name')?.errors?.['minlength']">Name must be at least 3 characters</span>
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span class="required">*</span></label>
+        <input id="email" type="email" formControlName="email" placeholder="user@example.com" [attr.aria-invalid]="getControl('email')?.invalid" />
+        <p *ngIf="getControl('email')?.invalid && getControl('email')?.touched" class="error">Enter a valid email</p>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone <span class="required">*</span></label>
+        <input id="phone" type="tel" formControlName="phone" placeholder="+1-555-0100" [attr.aria-invalid]="getControl('phone')?.invalid" />
+        <p *ngIf="getControl('phone')?.invalid && getControl('phone')?.touched" class="error">Enter a valid phone number</p>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role <span class="required">*</span></label>
+        <select id="role" formControlName="role">
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+          <option value="guest">Guest</option>
+        </select>
+        <p *ngIf="getControl('role')?.invalid && getControl('role')?.touched" class="error">Role is required</p>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status <span class="required">*</span></label>
+        <select id="status" formControlName="status">
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+        <p *ngIf="getControl('status')?.invalid && getControl('status')?.touched" class="error">Status is required</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="onCancel()" class="btn-secondary" [disabled]="isLoading">Cancel</button>
+      <button type="submit" [disabled]="form.invalid || isLoading" class="btn-primary">
+        {{ isLoading ? 'Saving...' : 'Save Changes' }}
+      </button>
+    </div>
+  </div>
+</form>
