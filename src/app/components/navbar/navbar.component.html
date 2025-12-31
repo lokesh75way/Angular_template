@@ -11,6 +11,7 @@
             <li *ngIf="!isLoggedIn()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
             <li *ngIf="isLoggedIn()"><a routerLink="/users" routerLinkActive="active">Users</a></li>
             <li *ngIf="isLoggedIn()"><a routerLink="/products" routerLinkActive="active">Products</a></li>
+            <li *ngIf="isLoggedIn()"><a routerLink="/todos" routerLinkActive="active">To Dos</a></li>
         </ul>
 
         <div class="nav-user" *ngIf="isLoggedIn()">

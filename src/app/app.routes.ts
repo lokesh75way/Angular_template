@@ -50,6 +50,12 @@ export const routes: Routes = [
     data: { title: 'Edit Product' }
   },
   {
+    path: 'todos',
+    loadChildren: () => import('./modules/todos/todos.module').then((m) => m.TodosModule),
+    canActivate: [AuthGuard],
+    data: { title: 'Todos' }
+  },
+  {
     path: '404',
     component: NotFoundComponent
   },

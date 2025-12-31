@@ -1,0 +1,9 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+}
