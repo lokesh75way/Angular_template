@@ -1,9 +1,15 @@
 <div class="todos">
   <h2>Todos</h2>
+
+  <div class="add-todo">
+    <input type="text" [(ngModel)]="newTodoTitle" placeholder="Enter new todo..." (keyup.enter)="onAddTodo()" />
+    <button (click)="onAddTodo()">Add Todo</button>
+  </div>
+
   <div *ngIf="loading$ | async">Loading…</div>
   <ul>
     <li *ngFor="let todo of todos$ | async">
-      <app-todo-item [todo]="todo"></app-todo-item>
+      <app-todo-item [todo]="todo" (toggle)="onToggleTodo($event)" (delete)="onDeleteTodo($event)"></app-todo-item>
     </li>
   </ul>
 </div>

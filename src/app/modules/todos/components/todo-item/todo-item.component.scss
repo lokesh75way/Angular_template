@@ -2,8 +2,28 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  
   .completed {
     text-decoration: line-through;
     opacity: 0.7;
+  }
+
+  span {
+    flex: 1;
+  }
+
+  .delete-btn {
+    padding: 0.25rem 0.75rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #c82333;
+    }
   }
 }

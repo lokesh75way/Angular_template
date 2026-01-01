@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../models/todo.model';
 
 @Component({
@@ -8,4 +8,18 @@ import { Todo } from '../../models/todo.model';
 })
 export class TodoItemComponent {
   @Input() todo: Todo | null = null;
+  @Output() toggle = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<number>();
+
+  onToggle(): void {
+    if (this.todo) {
+      this.toggle.emit(this.todo.id);
+    }
+  }
+
+  onDelete(): void {
+    if (this.todo) {
+      this.delete.emit(this.todo.id);
+    }
+  }
 }

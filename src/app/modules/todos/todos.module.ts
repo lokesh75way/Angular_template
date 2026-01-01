@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -21,6 +21,7 @@ import { DummyHeaderInterceptor } from './interceptors/dummy-header.interceptor'
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(TodosRoutes),
     StoreModule.forFeature('todos', todoReducer),
     EffectsModule.forFeature([TodoEffects])
@@ -30,4 +31,4 @@ import { DummyHeaderInterceptor } from './interceptors/dummy-header.interceptor'
     { provide: HTTP_INTERCEPTORS, useClass: DummyHeaderInterceptor, multi: true }
   ]
 })
-export class TodosModule {}
+export class TodosModule { }
